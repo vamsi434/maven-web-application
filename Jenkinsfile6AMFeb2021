@@ -9,8 +9,7 @@ node
   echo "Jenkins Home is: --> ${env.JENKINS_HOME}"
   echo "Jenkins URL is: -->  ${env.JENKINS_URL}"
   echo "JOB Name is: -->  ${env.JOB_NAME}"
-  
-  properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '3', daysToKeepStr: '', numToKeepStr: '3')), pipelineTriggers([pollSCM('* * * * * ')])])
+  properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('* * * * *')])])
   
  stage('CheckoutCode')
  {
